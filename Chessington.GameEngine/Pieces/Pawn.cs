@@ -22,7 +22,7 @@ namespace Chessington.GameEngine.Pieces
         public override IEnumerable<Square> GetAvailableMoves(Board board)
         {
             var pos = board.FindPiece(this);
-            int direction = Player == Player.Black ? 1 : -1;
+            var direction = Player == Player.Black ? 1 : -1;
             var legalMoves = new List<Square>
             {
                 new Square(pos.Row + direction, pos.Col)
