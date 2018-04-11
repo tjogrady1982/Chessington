@@ -5,36 +5,34 @@ namespace Chessington.GameEngine.Pieces
 {
     public class Pawn : Piece
     {
-        public Pawn(Player player) 
-            : base(player) { }
+        private bool hasEverMoved;
+
+        public Pawn(Player player)
+            : base(player)
+        {
+            hasEverMoved = false;
+        }
+
+        public override void MoveTo(Board board, Square square)
+        {
+            hasEverMoved = true;
+            base.MoveTo(board, square);
+        }
 
         public override IEnumerable<Square> GetAvailableMoves(Board board)
         {
-            
-           var column = board.FindPiece(this).Col;
-            var row = board.FindPiece(this).Row;
-            if (Player == Player.Black)
+            var pos = board.FindPiece(this);
+            int direction = Player == Player.Black ? 1 : -1;
+            var legalMoves = new List<Square>
             {
-                return new List<Square>
-                {
-                    Square.At(row + 1, column)
-                };
-            }
-            else if (Player == Player.White)
-
-            {
-                return new List<Square>
-                {
-                    Square.At(row - 1, column)
-                };
-            }
-
-            return new List<Square>
-            {
-                //Square.At(6, 0)
+                new Square(pos.Row + direction, pos.Col)
             };
+            if (!hasEverMoved)
+            {
+                legalMoves.Add(new Square(pos.Row + 2 * direction, pos.Col));
+            }
 
-            //return Enumerable.Empty<Square>();
+            return legalMoves;
         }
     }
 }
