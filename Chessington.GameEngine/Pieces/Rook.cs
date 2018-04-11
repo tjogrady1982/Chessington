@@ -14,13 +14,13 @@ namespace Chessington.GameEngine.Pieces
 
             var pos = board.FindPiece(this);
             var legalMoves = new List<Square>();
-            
+
 
             for (var i = 0; i < 8; i++)
 
             {
-                
-                var placeICanMove = new Square(pos.Row,  i);
+
+                var placeICanMove = new Square(pos.Row, i);
 
                 if (placeICanMove != pos)
                 {
@@ -36,7 +36,7 @@ namespace Chessington.GameEngine.Pieces
 
             }
 
-            
+
 
             return legalMoves;
         }
