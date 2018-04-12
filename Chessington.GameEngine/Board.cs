@@ -44,7 +44,16 @@ namespace Chessington.GameEngine
 
         public Player PieceColour(Square square)
         {
-            return GetPiece(square).Player;
+            if (GetPiece(square) == null)
+            {
+                return Player.NoPlayer;
+            }
+
+            else
+            {
+                return GetPiece(square).Player;
+            }
+            
         }
 
     

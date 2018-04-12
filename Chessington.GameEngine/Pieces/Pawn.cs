@@ -27,7 +27,7 @@ namespace Chessington.GameEngine.Pieces
         {
             var pos = board.FindPiece(this);
             var direction = Player == Player.Black ? 1 : -1;//ternary operator
-            var lastRow = Player == Player.Black ? 7 : 0;
+           // var lastRow = Player == Player.Black ? 7 : 0;
 
             var legalMoves = new List<Square>();
             var squareInFront = new Square(pos.Row + direction, pos.Col);
