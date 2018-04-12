@@ -48,30 +48,6 @@ namespace Chessington.GameEngine.Pieces
 
 
 
-            //for (var i = 0; i < 8; i++)
-
-            //{
-
-            //    var placeICanMove = new Square(pos.Row, i);
-            //    var previouSquare = new Square(pos.Row, i + 1);
-
-
-            //    if (placeICanMove != pos && board.IsVacant(placeICanMove))
-            //    {
-            //        legalMoves.Add(placeICanMove);
-            //    }
-
-            //    placeICanMove = new Square(i, pos.Col);
-
-            //    if (placeICanMove != pos && board.IsVacant(placeICanMove))
-            //    {
-            //        legalMoves.Add(placeICanMove);
-            //    }
-
-            //}
-
-
-
             return legalMoves;
         }
     }

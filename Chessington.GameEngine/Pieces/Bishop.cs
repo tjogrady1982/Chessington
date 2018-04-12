@@ -12,42 +12,36 @@ namespace Chessington.GameEngine.Pieces
         {
             var pos = board.FindPiece(this);
             var legalMoves = new List<Square>();
-
-
-            for (var i = 0; i < 8; i++)
-
+            var directions = new List<List<int>>
             {
+                new List<int> {1, 1},
+                new List<int> {1, -1},
+                new List<int> {-1, -1},
+                new List<int> {-1, 1}
+            };
 
-                var placeICanMove = new Square(pos.Row + i, pos.Col + i);
 
-                if (placeICanMove != pos & placeICanMove.Row < 8 &  placeICanMove.Col < 8)
+            foreach (var direction in directions)
+            {
+                for (var i = 1; i < 8; i++)
                 {
-                    legalMoves.Add(placeICanMove);
+                    var placeICanMove = pos.NextSquare(direction[0] * i, direction[1] * i);
+                    //var pieceColour = new Player();
+
+                    if (placeICanMove.OnBoard() && board.IsVacant(placeICanMove))//|| board.PieceColour(placeICanMove) != Player))
+                    {
+                        legalMoves.Add(placeICanMove);
+
+                        //if (board.PieceColour(placeICanMove) != Player)
+                        //{
+                        //    break;
+                        //}
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
-
-                placeICanMove = new Square(pos.Row - i, pos.Col - i );
-
-                if (placeICanMove != pos & placeICanMove.Row > -1 & placeICanMove.Col > -1)
-                {
-                    legalMoves.Add(placeICanMove);
-                }
-
-
-                placeICanMove = new Square(pos.Row + i, pos.Col - i);
-
-                if (placeICanMove != pos & placeICanMove.Row < 8 & placeICanMove.Col > -1)
-                {
-                    legalMoves.Add(placeICanMove);
-                }
-               
-                placeICanMove = new Square(pos.Row - i, pos.Col + i);
-
-                if (placeICanMove != pos & placeICanMove.Row > -1 & placeICanMove.Col < 8)
-                {
-                    legalMoves.Add(placeICanMove);
-                }
-
-
             }
 
 
