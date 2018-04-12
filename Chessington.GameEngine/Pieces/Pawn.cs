@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Chessington.GameEngine.Pieces
@@ -13,6 +14,9 @@ namespace Chessington.GameEngine.Pieces
             hasEverMoved = false;
         }
 
+
+
+
         public override void MoveTo(Board board, Square square)
         {
             hasEverMoved = true;
@@ -23,13 +27,20 @@ namespace Chessington.GameEngine.Pieces
         {
             var pos = board.FindPiece(this);
             var direction = Player == Player.Black ? 1 : -1;//ternary operator
-            var legalMoves = new List<Square>
+
+            var legalMoves = new List<Square>();
+            var squareInFront = new Square(pos.Row + direction, pos.Col);
+
+            if (board.IsVacant(squareInFront))
             {
-                new Square(pos.Row + direction, pos.Col)
-            };
-            if (!hasEverMoved)
+                legalMoves.Add(squareInFront); //check if position is occupied
+            }
+
+            var squareTwoInFront = new Square(pos.Row + 2 * direction, pos.Col);
+
+            if (!hasEverMoved && board.IsVacant(squareTwoInFront)&& board.IsVacant(squareInFront))
             {
-                legalMoves.Add(new Square(pos.Row + 2 * direction, pos.Col));
+                legalMoves.Add(squareTwoInFront);//check if position is occupied
             }
 
             return legalMoves;
