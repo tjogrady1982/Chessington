@@ -33,14 +33,14 @@ namespace Chessington.GameEngine.Pieces
                     var placeICanMove = pos.NextSquare(direction[0] * i, direction[1] * i);
                     //var pieceColour = new Player();
 
-                    if (placeICanMove.OnBoard() && board.IsVacant(placeICanMove))//|| board.PieceColour(placeICanMove) != Player))
+                    if (placeICanMove.OnBoard() && (board.IsVacant(placeICanMove)|| board.PieceColour(placeICanMove) != Player))
                     {
                         legalMoves.Add(placeICanMove);
 
-                        //if (board.PieceColour(placeICanMove) != Player)
-                        //{
-                        //    break;
-                        //}
+                        if (board.IsVacant(placeICanMove) == false)
+                        {
+                            break;
+                        }
                     }
                     else
                     {

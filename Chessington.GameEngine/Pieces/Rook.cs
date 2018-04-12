@@ -34,12 +34,7 @@ namespace Chessington.GameEngine.Pieces
                     {
                         legalMoves.Add(placeICanMove);
 
-                        //if (board.PieceColour(placeICanMove) != Player || board.PieceColour(placeICanMove) != Player.NoPlayer)
-                        //{
-                        //    //legalMoves.Add(placeICanMove);
-                        //    break;
-                        //}
-
+                        
                         if (board.IsVacant(placeICanMove) == false)
                         {
                             break;
