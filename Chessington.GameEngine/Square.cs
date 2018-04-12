@@ -16,6 +16,20 @@
             return new Square(row, col);
         }
 
+        public Square NextSquare(int rowChange, int columnChange)
+        {
+            return new Square(Row + rowChange, Col + columnChange);
+        }
+
+        public bool OnBoard()
+        {
+            return
+                0 <= Row &&
+                Row < GameSettings.BoardSize &&
+                0 <= Col &&
+                Col < GameSettings.BoardSize;
+        }
+
         public bool Equals(Square other)
         {
             return Row == other.Row && Col == other.Col;

@@ -35,7 +35,13 @@ namespace Chessington.GameEngine
         {
            return GetPiece(square) == null;
         }
-        
+
+        public Player PieceColour(Square square)
+        {
+            return GetPiece(square).Player;
+        }
+
+    
         public Square FindPiece(Piece piece)
         {
             for (var row = 0; row < GameSettings.BoardSize; row++)
