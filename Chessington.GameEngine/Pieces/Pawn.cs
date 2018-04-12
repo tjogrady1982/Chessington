@@ -31,10 +31,22 @@ namespace Chessington.GameEngine.Pieces
 
             var legalMoves = new List<Square>();
             var squareInFront = new Square(pos.Row + direction, pos.Col);
+            var potentialVictim1 = new Square(pos.Row + direction, pos.Col + direction);
+            var potentialVictim2 = new Square(pos.Row + direction, pos.Col - direction);
 
             if (board.IsVacant(squareInFront) && squareInFront.OnBoard())
             {
                 legalMoves.Add(squareInFront); //check if position is occupied
+            }
+
+            if (board.IsVacant(potentialVictim1) == false && board.PieceColour(potentialVictim1) != Player)
+            {
+                legalMoves.Add(potentialVictim1);
+            }
+
+            if (board.IsVacant(potentialVictim2) == false && board.PieceColour(potentialVictim2) != Player)
+            {
+                legalMoves.Add(potentialVictim2);
             }
 
             var squareTwoInFront = new Square(pos.Row + 2 * direction, pos.Col);
