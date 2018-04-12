@@ -27,18 +27,19 @@ namespace Chessington.GameEngine.Pieces
         {
             var pos = board.FindPiece(this);
             var direction = Player == Player.Black ? 1 : -1;//ternary operator
+            var lastRow = Player == Player.Black ? 7 : 0;
 
             var legalMoves = new List<Square>();
             var squareInFront = new Square(pos.Row + direction, pos.Col);
 
-            if (board.IsVacant(squareInFront))
+            if (board.IsVacant(squareInFront) && squareInFront.OnBoard())
             {
                 legalMoves.Add(squareInFront); //check if position is occupied
             }
 
             var squareTwoInFront = new Square(pos.Row + 2 * direction, pos.Col);
 
-            if (!hasEverMoved && board.IsVacant(squareTwoInFront)&& board.IsVacant(squareInFront))
+            if (!hasEverMoved && board.IsVacant(squareTwoInFront) && board.IsVacant(squareInFront) && squareInFront.OnBoard())
             {
                 legalMoves.Add(squareTwoInFront);//check if position is occupied
             }

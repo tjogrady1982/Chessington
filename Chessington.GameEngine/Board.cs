@@ -28,7 +28,13 @@ namespace Chessington.GameEngine
     
         public Piece GetPiece(Square square)
         {
-            return board[square.Row, square.Col];
+            if (square.OnBoard())
+                { return board[square.Row, square.Col]; }
+            else
+            {
+                return null;
+            }
+            
         }
 
         public bool IsVacant(Square square)
