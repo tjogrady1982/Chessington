@@ -17,7 +17,7 @@ namespace Chessington.GameEngine.Pieces
                 
                 var placeICanMove = new Square(pos.Row + 1, pos.Col + 2);
 
-                if (placeICanMove != pos & placeICanMove.Row < 8 & placeICanMove.Col < 8)
+                if (placeICanMove != pos && placeICanMove.OnBoard() && (board.IsVacant(placeICanMove) || board.PieceColour(placeICanMove) != Player))
                 {
                     legalMoves.Add(placeICanMove);
                 }
@@ -25,7 +25,7 @@ namespace Chessington.GameEngine.Pieces
                 
                 placeICanMove = new Square(pos.Row - 1, pos.Col - 2);
 
-                if (placeICanMove != pos & placeICanMove.Row > -1 & placeICanMove.Col > -1)
+                if (placeICanMove != pos && placeICanMove.OnBoard() && (board.IsVacant(placeICanMove) || board.PieceColour(placeICanMove) != Player))
                 {
                     legalMoves.Add(placeICanMove);
                 }
@@ -33,7 +33,7 @@ namespace Chessington.GameEngine.Pieces
                 
                 placeICanMove = new Square(pos.Row + 1, pos.Col -2);
 
-                if (placeICanMove != pos & placeICanMove.Row < 8 & placeICanMove.Col > -1)
+                if (placeICanMove != pos && placeICanMove.OnBoard() && (board.IsVacant(placeICanMove) || board.PieceColour(placeICanMove) != Player))
                 {
                     legalMoves.Add(placeICanMove);
                 }
@@ -41,7 +41,7 @@ namespace Chessington.GameEngine.Pieces
                 
                 placeICanMove = new Square(pos.Row - 1, pos.Col + 2);
 
-                if (placeICanMove != pos & placeICanMove.Row > -1 & placeICanMove.Col < 8)
+                if (placeICanMove != pos && placeICanMove.OnBoard() && (board.IsVacant(placeICanMove) || board.PieceColour(placeICanMove) != Player))
                 {
                     legalMoves.Add(placeICanMove);
                 }
@@ -49,7 +49,7 @@ namespace Chessington.GameEngine.Pieces
 
             placeICanMove = new Square(pos.Row + 2, pos.Col + 1);
 
-            if (placeICanMove != pos & placeICanMove.Row < 8 & placeICanMove.Col < 8)
+            if (placeICanMove != pos && placeICanMove.OnBoard() && (board.IsVacant(placeICanMove) || board.PieceColour(placeICanMove) != Player))
             {
                 legalMoves.Add(placeICanMove);
             }
@@ -57,7 +57,7 @@ namespace Chessington.GameEngine.Pieces
             
             placeICanMove = new Square(pos.Row - 2, pos.Col - 1);
 
-            if (placeICanMove != pos & placeICanMove.Row > -1 & placeICanMove.Col > -1)
+            if (placeICanMove != pos && placeICanMove.OnBoard() && (board.IsVacant(placeICanMove) || board.PieceColour(placeICanMove) != Player))
             {
                 legalMoves.Add(placeICanMove);
             }
@@ -65,7 +65,7 @@ namespace Chessington.GameEngine.Pieces
             
             placeICanMove = new Square(pos.Row + 2, pos.Col - 1);
 
-            if (placeICanMove != pos & placeICanMove.Row < 8 & placeICanMove.Col > -1)
+            if (placeICanMove != pos && placeICanMove.OnBoard() && (board.IsVacant(placeICanMove) || board.PieceColour(placeICanMove) != Player))
             {
                 legalMoves.Add(placeICanMove);
             }
@@ -73,7 +73,7 @@ namespace Chessington.GameEngine.Pieces
             
             placeICanMove = new Square(pos.Row - 2, pos.Col + 1);
 
-            if (placeICanMove != pos & placeICanMove.Row > -1 & placeICanMove.Col < 8)
+            if (placeICanMove != pos && placeICanMove.OnBoard() && (board.IsVacant(placeICanMove) || board.PieceColour(placeICanMove) != Player))
             {
                 legalMoves.Add(placeICanMove);
             }
